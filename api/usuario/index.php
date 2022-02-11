@@ -1,5 +1,5 @@
 <?php
-require_once "../../dataModels/cidade.php";
+require_once "../../dataModels/usuario.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -10,30 +10,31 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $data = [];
 
 $method = $_SERVER['REQUEST_METHOD'];
-$codCidade = $_REQUEST['codCidade'] ?? 0;
+$email = $_REQUEST['email'] ?? "";
 $nome = $_REQUEST['nome'] ?? "";
+$urlFoto = $_REQUEST['urlFoto'] ?? "";
 
-$cidade = new Cidade;
-$cidade->setCodCidade($codCidade);
+$usuario = new usuario;
+$usuario->setEmail($email);
 
 
 if($method == "POST" && $nome !== null ){
-    $cidade->setNome($nome);
-    $data["cidade"] = $cidade->post();
+    $usuario->setNome($nome);
+    $data["usuario"] = $usuario->post();
 }
 
 if($method === "GET") {
 
-    $data["cidade"] = $cidade->get();
+    $data["usuario"] = $usuario->get();
 }
 
-if($method == "PUT" && $nome !== null && $codCidade > 0 ){
+if($method == "PUT" && $nome !== null && $email != "" && $email != null ){
 
-    $cidade->setNome($nome);
+    $usuario->setNome($nome);
 
-    $data["cidade"] = $cidade->put();
+    $data["usuario"] = $usuario->put();
 }
-if($method == "DELETE" && $codCidade > 0){
+if($method == "DELETE" && $email != null && $email != ""){
     $data["cidade"] = $cidade->delete();
 }
 

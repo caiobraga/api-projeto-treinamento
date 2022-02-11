@@ -22,19 +22,19 @@ class Cidade extends DataModelBase{
     }
 
   
-    public function create() :array{
+    public function post() :array{
         $con = $this->connection();
         $stmt = $con->prepare("INSERT INTO cidade VALUES (NULL, :_nome)");
         $stmt->bindValue(":_nome", $this->getNome(), \PDO::PARAM_STR);
 
         if ($stmt->execute()){
             $this->setCodCidade($con->lastInsertId());
-            return $this->read();
+            return $this->get();
         }
         return [];
     }
 
-    public function read() :array{
+    public function get() :array{
         $con = $this->connection();
 
         if($this->getCodCidade() > 0){
@@ -57,19 +57,19 @@ class Cidade extends DataModelBase{
         
     }
 
-    public function update() :array{
+    public function put() :array{
         $con = $this->connection();
         $stmt = $con->prepare("UPDATE cidade SET nome = :_nome WHERE codCidade = :_codCidade");
         $stmt->bindValue(":_nome", $this->getNome(), \PDO::PARAM_STR);
          $stmt->bindValue(":_codCidade", $this->getCodCidade(), \PDO::PARAM_INT);
         if ($stmt->execute()){
-            return $this->read();
+            return $this->get();
         }
         return [];
     }
 
         public function delete() :array{
-        $person = $this->read();
+        $person = $this->get();
         $con = $this->connection();
         $stmt = $con->prepare("DELETE FROM cidade WHERE codCidade = :_codCidade");
          $stmt->bindValue(":_codCidade", $this->getCodCidade(), \PDO::PARAM_INT);
