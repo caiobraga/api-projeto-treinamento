@@ -6,11 +6,10 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: whoami
+        key: ${{ secrets.SSH_PRIVATE_KEY }} 
+        known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+    - name: Deploy with rsync
+      run: rsync -avz ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/home/zellwk/zellwk.com/dist/
