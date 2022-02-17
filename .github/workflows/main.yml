@@ -35,5 +35,5 @@ jobs:
           REPOSITORY_PATH: ../*
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SERVER_PATH: ./voadragons/
+          SERVER_PATH: ./voadragons/api/teste/
  
