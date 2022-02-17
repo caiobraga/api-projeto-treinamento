@@ -19,7 +19,7 @@ jobs:
     - name: Adding Known Hosts
       run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
     - name: Deploy with rsync
-      run: rsync -anv ${{ env.GITHUB_REPOSITORY }}/work/api-projeto-treinamento/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
+      run: rsync -anv  $GITHUB_REPOSITORY ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
 
 #name: remote ssh command
 #on: 
