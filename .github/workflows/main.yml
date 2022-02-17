@@ -38,7 +38,7 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           # user of the server
            #caiobraga/api-projeto-treinamento/.github/workflows/main.yml@refs/heads/main
-          REPOSITORY_PATH: ../../api-projeto-treinamento
+          REPOSITORY_PATH: ../api-projeto-treinamento
           USER: ${{ secrets.SSH_USER }}
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
