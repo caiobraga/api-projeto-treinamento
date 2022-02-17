@@ -30,12 +30,13 @@ jobs:
       - name: rsync deployment
         # You may pin to the exact commit or the version.
         # uses: D3rHase/rsync-deploy-action@04c107c03c0c281c901e70eec58e22b56ea3d27a
-        uses: D3rHase/rsync-deploy-action@v0.1
+        #uses: D3rHase/rsync-deploy-action@v0.1
+        uses: contention/rsync-deployments@v1.0.0
         with:
           # hostname / IP of the server
           HOST: ${{ secrets.SSH_HOST }}
           # user of the server
-          REPOSITORY_PATH: /home/runner/work/api-projeto-treinamento
+          REPOSITORY_PATH: ../../*
           USER: ${{ secrets.SSH_USER }}
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
