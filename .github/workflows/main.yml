@@ -35,7 +35,7 @@ jobs:
           # hostname / IP of the server
           HOST: ${{ secrets.SSH_HOST }}
           # user of the server
-          REPOSITORY_PATH: ../../../
+          REPOSITORY_PATH: /home/runner/work/api-projeto-treinamento
           USER: ${{ secrets.SSH_USER }}
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
