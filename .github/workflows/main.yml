@@ -21,7 +21,7 @@ jobs:
     - name: Listagem de arquivos
       run: ls /../../../../../home/
     - name: Deploy with rsync
-      run: rsync -anv ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
+      run: rsync -anv ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons
 
 #name: remote ssh command
 #on: 
