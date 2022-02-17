@@ -32,7 +32,7 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           # user of the server
           USER: ${{ secrets.SSH_USER }}
-          REPOSITORY_PATH: ../../../api-projeto-treinamento
+          REPOSITORY_PATH: ./dist/
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_PATH: ./voadragons/
