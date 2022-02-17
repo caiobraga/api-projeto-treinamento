@@ -23,10 +23,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: rsync deployments
-        # You may pin to the exact commit or the version.
-        # uses: contention/rsync-deployments@980b08d70e94c4ac0169ee5c5acc9ace2fe8ccd4
-        uses: contention/rsync-deployments@v1.0.0
       - name: Create SSH key
         run: |
           mkdir -p ~/.ssh/
@@ -41,5 +37,7 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy with rsync
-        run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons
+        uses: contention/rsync-deployments@v1.0.0
+        with:
+         run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons
  
