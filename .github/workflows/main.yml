@@ -14,6 +14,32 @@ jobs:
     - name: Adding Known Hosts
       run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
     - name: Deploy with rsync
-      run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
+      run: rsync -avz ../../../* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
 
+#name: remote ssh command
+#2on: 
+#  push:
+#    branches: 
+#      - main
+  
+
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: rsync deployment
+        # You may pin to the exact commit or the version.
+        # uses: D3rHase/rsync-deploy-action@04c107c03c0c281c901e70eec58e22b56ea3d27a
+#        uses: D3rHase/rsync-deploy-action@v0.1
+#        with:
+#          # hostname / IP of the server
+#          HOST: ${{ secrets.SSH_HOST }}
+#          # user of the server
+#           #caiobraga/api-projeto-treinamento/.github/workflows/main.yml@refs/heads/main
+#          REPOSITORY_PATH: ../../../../../../api-projeto-treinamento
+#          USER: ${{ secrets.SSH_USER }}
+#          # private ssh key registered on the server
+#          PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+#          SERVER_PATH: ./voadragons/
+ 
 
