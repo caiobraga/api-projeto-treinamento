@@ -23,6 +23,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: rsync deployments
+        # You may pin to the exact commit or the version.
+        # uses: contention/rsync-deployments@980b08d70e94c4ac0169ee5c5acc9ace2fe8ccd4
+        uses: contention/rsync-deployments@v1.0.0
       - name: Create SSH key
         run: |
           mkdir -p ~/.ssh/
