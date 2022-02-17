@@ -17,7 +17,11 @@
 #      run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons/
 
 name: remote ssh command
-on: [push]
+on: 
+  push:
+    branches: 
+      - main
+  
 
 jobs:
   build:
@@ -32,7 +36,6 @@ jobs:
           HOST: ${{ secrets.SSH_HOST }}
           # user of the server
           USER: ${{ secrets.SSH_USER }}
-          REPOSITORY_PATH: ../../../../
           # private ssh key registered on the server
           PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_PATH: ./voadragons/
