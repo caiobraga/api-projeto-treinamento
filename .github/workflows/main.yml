@@ -23,8 +23,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: rsync deployment
         # You may pin to the exact commit or the version.
         # uses: D3rHase/rsync-deploy-action@04c107c03c0c281c901e70eec58e22b56ea3d27a
