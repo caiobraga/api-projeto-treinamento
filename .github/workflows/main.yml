@@ -38,6 +38,16 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy with rsync
         uses: contention/rsync-deployments@v1.0.0
+      - name: rsync deployment
+        # You may pin to the exact commit or the version.
+        # uses: D3rHase/rsync-deploy-action@04c107c03c0c281c901e70eec58e22b56ea3d27a
+        uses: D3rHase/rsync-deploy-action@v0.1
         with:
-         run: rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/voadragons
+          # hostname / IP of the server
+          HOST: ${{ secrets.SSH_HOST }}
+          # user of the server
+          USER: ${{ secrets.SSH_USER }}
+          # private ssh key registered on the server
+          PRIVATE_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_PATH: ./voadragons/
  
